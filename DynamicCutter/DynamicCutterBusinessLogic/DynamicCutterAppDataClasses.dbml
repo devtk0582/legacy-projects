@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DynamicCutterApp" Class="DynamicCutterAppDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=DynamicCutterApp;Integrated Security=True" SettingsObjectName="DynamicCutterBusinessLogic.Properties.Settings" SettingsPropertyName="DynamicCutterAppConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DC_ShiftMaster" Member="DC_ShiftMasters">
+    <Type Name="DC_ShiftMaster">
+      <Column Name="ShiftId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LocationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShiftDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_LocationMaster" Member="DC_LocationMasters">
+    <Type Name="DC_LocationMaster">
+      <Column Name="LocationId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_Users" Member="DC_Users">
+    <Type Name="DC_User">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoginId" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MiddleName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DepartmentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShiftId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClockNo" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_RollMaster" Member="DC_RollMasters">
+    <Type Name="DC_RollMaster">
+      <Column Name="RollID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RollNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_RollNumbers" Member="DC_RollNumbers">
+    <Type Name="DC_RollNumber">
+      <Column Name="RollNumberID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RollID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ScheduleTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_TransmitLog" Member="DC_TransmitLogs">
+    <Type Name="DC_TransmitLog">
+      <Column Name="LogID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RollID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LogTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RxTxFlag" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="LogMessage" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Side" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_DefectMaster" Member="DC_DefectMasters">
+    <Type Name="DC_DefectMaster">
+      <Column Name="DefectID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DefectCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DefectDesc" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_ActionMaster" Member="DC_ActionMasters">
+    <Type Name="DC_ActionMaster">
+      <Column Name="ActionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActionDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_ProductionLineInfo" Member="DC_ProductionLineInfos">
+    <Type Name="DC_ProductionLineInfo">
+      <Column Name="ProductionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LocationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Width" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Line" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EastIP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WestIP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SQLUserID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SQLPassword" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prefix" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="MasterSide" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_ExamRollLog" Member="DC_ExamRollLogs">
+    <Type Name="DC_ExamRollLog">
+      <Column Name="LogID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RollID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LMR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Spot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DefectCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Side" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Shade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Transmitted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_CurrentUsers" Member="DC_CurrentUsers">
+    <Type Name="DC_CurrentUser">
+      <Column Name="Side" Type="System.String" DbType="NVarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DC_ErrorLogs" Member="DC_ErrorLogs">
+    <Type Name="DC_ErrorLog">
+      <Column Name="ErrorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StackTrace" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ErrorTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetRollInfo" Method="GetRollInfo">
+    <ElementType Name="GetRollInfoResult">
+      <Column Name="CurrentRoll" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NextRoll" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CurrentRollID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NextRollID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ChangeRoll" Method="ChangeRoll">
+    <Parameter Name="current_roll_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="next_roll_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ChangeRollResult">
+      <Column Name="NextRoll" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NextRollID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetUserMasterData" Method="GetUserMasterData">
+    <Parameter Name="user_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ip" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetUserMasterDataResult">
+      <Column Name="Location" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Line" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Shift" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Side" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Prefix" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="MasterSide" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AbortRoll" Method="AbortRoll">
+    <Parameter Name="roll_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteExamRollLog" Method="DeleteExamRollLog">
+    <Parameter Name="log_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.TransferRollLogs" Method="TransferRollLogs">
+    <Parameter Name="roll_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="is_transmitted" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
