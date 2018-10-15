@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/EchoMap/EchoMapApp/obj/Debug
+/EchoMap/EchoMapApp/bin
+/EchoMap/.vs
+*.user
+*.xml
