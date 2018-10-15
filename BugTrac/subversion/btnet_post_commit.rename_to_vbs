@@ -1,0 +1,256 @@
+option explicit
+
+' BugTracker.NET integration - http://ifdefined.com/bugtrackernet.html
+' Corey Trager, Nov 2007
+
+
+
+'      HOW TO INSTALL THIS SCRIPT
+
+
+
+
+' This script is a Subversion "post-commit hook".  Subversion will execute
+' this script after each commit.  When you do a check-in, type the 
+' BugTracker.NET id as the first characters in your comment.  So, if you
+' were working on bug #123, your comment might say:
+' 123 Fixed problem with air-traffic control software.
+
+' The script parses out the digits, gathers info from Subversion, and
+' inserts it into the database creating a relationship between the 
+' BugTracker.NET bug id and the Subversion revision id.
+
+' Here are the steps for installing this file.
+
+
+' 1) Create a file in your repository hooks folder called "post-commit.bat".
+'    Put just one line in the .bat file which will execute this vbs script.
+'    Your one line should look something like this:
+'    C:\somewhere\btnet_post_commit.vbs %1 %2
+
+
+' 2) Put this script where the .bat file is pointing to
+
+
+' 3) Edit the line below so that this script knows where to find your 
+'    Subversion svnlook command.
+
+dim svnlook_path
+svnlook_path = """c:\program files\subversion\bin\svnlook"""
+ 
+ 
+' 4) Edit the database connection string.
+'    This is NOT the same as the one in web.config.   Web.config is using ADO.NET.
+'    This one is using plain old ADO.
+
+dim connection_string
+connection_string = "Provider=SQLOLEDB; Data Source=(local); Initial Catalog=btnet; User ID=sa; Password=;"
+
+' OPTIONAL
+'
+' You can make the integration even better by running the .bat
+' file "TortoiseSVN_integration.bat in the root of your 
+' checkout folder.
+' 
+' Set bUsingTortoiseSVN to true and that will change the logic
+' here to look for the bugid at the end of the comment instead
+' of the beginning.
+' 
+' See http://tortoisesvn.net/issuetracker_integration for
+' more info.
+'
+dim bUsingTortoiseSVN
+bUsingTortoiseSVN = false
+
+' END OF THE PARTS YOU HAVE TO CHANGE.   THE REST SHOULD BE OK AS IS.
+
+
+dim debug
+'debug = true
+debug = false
+
+dim repos
+dim rev
+repos = wscript.arguments(0)
+rev = wscript.arguments(1)
+
+debug_out(repos)
+debug_out(rev)
+
+dim shell
+set shell = WScript.Createobject("WScript.Shell")
+
+dim cmd
+dim results_object
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' run the svnlook info command
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+dim info_string
+cmd = svnlook_path & " info -r " & rev & " " & repos 
+set results_object = shell.exec(cmd)
+do while results_object.status = 0
+   wscript.sleep 50
+loop 
+info_string = results_object.stdout.readall
+debug_out("info:" & info_string) 
+
+dim lines
+lines = split(info_string, vbcrlf)
+
+if ubound(lines) < 3 then
+	wscript.quit (0)
+end if
+
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' run the svnlook log command for the checkin msg
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+dim log_string
+cmd = svnlook_path & " log -r " & rev & " " & repos 
+set results_object = shell.exec(cmd)
+do while results_object.status = 0
+   wscript.sleep 50
+loop 
+log_string = results_object.stdout.readall
+debug_out("log:" & log_string) 
+
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' Look for the bugid as the first digits in the checkin comment
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+dim re
+set re = new regexp
+if bUsingTortoiseSVN then
+	re.pattern = "[0-9]*$"
+else
+	re.pattern = "^[0-9]*"
+end if
+
+dim matches
+
+if bUsingTortoiseSVN then
+	set matches = re.execute(lines(ubound(lines)-2))
+else
+	set matches = re.execute(lines(3))
+end if
+
+dim bugid
+if matches.count > 0 then
+
+	if matches(0).value <> "" then 
+		set bugid = matches(0) 
+	else 
+		' no digits, nothing to do 
+		wscript.quit 0 
+	end if 
+
+else
+	' no digits, nothing to do
+	wscript.quit 0
+end if
+
+
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' Connect to the database.
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+dim conn
+set conn = createobject("adodb.connection")
+open_db_connection(connection_string)
+
+debug_out("db conn:" & conn.state)
+
+if conn.state <> 1 then
+	wscript.quit 0
+end if
+
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' insert the revision into the db
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+dim sql
+sql =       " set nocount on; insert into svn_revisions "
+sql = sql &     " (svnrev_revision, svnrev_bug, svnrev_repository, svnrev_author, svnrev_svn_date, svnrev_btnet_date, svnrev_msg)"
+sql = sql &     " values ($svnrev, $bugid, N'$svnrepos', N'$svnauth', N'$svndate', getdate(), N'$svnmsg'); "
+sql = sql & " select scope_identity() "
+
+sql = replace(sql,"$svnrev",rev)
+sql = replace(sql,"$bugid",bugid)
+sql = replace(sql,"$svnrepos",repos)
+sql = replace(sql,"$svnauth",replace(lines(0),"'","''"))
+sql = replace(sql,"$svndate",lines(1))
+sql = replace(sql,"$svnmsg",replace(log_string,"'","''"))
+
+debug_out(sql)
+dim rs
+set rs = conn.execute(sql)
+debug_out("parent:" & rs(0))
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' run the svnlook changed command for the affected paths
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+dim changed_string
+cmd = svnlook_path & " changed -r " & rev & " " & repos 
+set results_object = shell.exec(cmd)
+do while results_object.status = 0
+   wscript.sleep 50
+loop 
+changed_string = results_object.stdout.readall
+debug_out(changed_string) 
+
+
+' loop through the files, the output of the "changed" command
+lines = split(changed_string, vbcrlf)
+
+if ubound(lines) > 0 then
+	dim i
+	for i = 0 to ubound(lines) - 1
+		dim cols
+		cols = split(lines(i), "   ")
+		if ubound(cols) = 1 then
+			dim action
+			dim file
+			action = cols(0)
+			file = cols(1)
+
+			sql =       "insert into svn_affected_paths "
+			sql = sql & " (svnap_svnrev_id, svnap_action, svnap_path) "
+			sql = sql & " values ($svnrev, N'$svnact', N'$svnpath')"
+			
+			sql = replace(sql,"$svnrev",rs(0))
+			sql = replace(sql,"$svnact",trim(action))
+			sql = replace(sql,"$svnpath",file)
+
+			conn.execute(sql)
+		end if
+	next
+end if
+
+
+sub open_db_connection(connection_string)
+	on error resume next
+	conn.open(connection_string)
+end sub
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' for debugging
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+sub debug_out(s)
+	if (debug) then
+
+		'create file system object
+		'dim fs
+		'set fs = createobject("scripting.FileSystemObject")
+
+		'create a new text file
+		'dim ts
+		'set ts = fs.OpenTextFile("c:\btnet_subversion_hook_log.txt", 8, true)
+
+		'write a line into the test file
+		'ts.writeline(s)
+
+		msgbox(s)
+	end if	
+end sub

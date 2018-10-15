@@ -1,0 +1,118 @@
+@echo off
+rem Enable cmd.exe syntax extensions, in case the user has defaulted them off.
+setlocal enableextensions
+
+rem --- IMPORTANT ---
+rem Remove the .rename suffix and place this in the hooks directory of your
+rem repository.  Afterwards, make edits to this file in your hooks directory
+rem to configure.  SEE BELOW FOR CONFIGURATION INSTRUCTIONS.
+
+rem NOTE: This comment block is what comes with Subversion:
+rem The pre-commit hook is invoked before a Subversion txn is
+rem committed.  Subversion runs this hook by invoking a program
+rem (script, executable, binary, etc.) named 'pre-commit' (for which
+rem this file is a template), with the following ordered arguments:
+rem
+rem   [1] REPOS-PATH   (the path to this repository)
+rem   [2] TXN-NAME     (the name of the txn about to be committed)
+rem
+rem The default working directory for the invocation is undefined, so
+rem the program should set one explicitly if it cares.
+rem
+rem If the hook program exits with success, the txn is committed; but
+rem if it exits with failure (non-zero), the txn is aborted, no commit
+rem takes place, and STDERR is returned to the client.   The hook
+rem program can use the 'svnlook' utility to help it examine the txn.
+rem
+rem On a Unix system, the normal procedure is to have 'pre-commit'
+rem invoke other programs to do the real work, though it may do the
+rem work itself too.
+rem
+rem   ***  NOTE: THE HOOK PROGRAM MUST NOT MODIFY THE TXN, EXCEPT  ***
+rem   ***  FOR REVISION PROPERTIES (like svn:log or svn:author).   ***
+rem
+rem   This is why we recommend using the read-only 'svnlook' utility.
+rem   In the future, Subversion may enforce the rule that pre-commit
+rem   hooks should not modify the versioned data in txns, or else come
+rem   up with a mechanism to make it safe to do so (by informing the
+rem   committing client of the changes).  However, right now neither
+rem   mechanism is implemented, so hook writers just have to be careful.
+rem
+rem Note that 'pre-commit' must be executable by the user(s) who will
+rem invoke it (typically the user httpd runs as), and that user must
+rem have filesystem-level permission to access the repository.
+rem
+rem On a Windows system, you should name the hook program
+rem 'pre-commit.bat' or 'pre-commit.exe',
+rem but the basic idea is the same.
+rem
+rem The hook program typically does not inherit the environment of
+rem its parent process.  For example, a common problem is for the
+rem PATH environment variable to not be set to its usual value, so
+rem that subprograms fail to launch unless invoked via absolute path.
+rem If you're having unexpected problems with a hook program, the
+rem culprit may be unusual (or missing) environment variables.
+rem 
+rem Here is an example hook script, for a Unix /bin/sh interpreter.
+rem For more examples and pre-written hooks, see those in
+rem the Subversion repository at
+rem http://svn.collab.net/repos/svn/trunk/tools/hook-scripts/ and
+rem http://svn.collab.net/repos/svn/trunk/contrib/hook-scripts/
+
+rem --- Begin configuration ---
+
+rem Edit the following environment variables to match your configuration.
+
+set SUBVERSIONBINPATH=c:\Program Files\Subversion\bin
+set REPOSITORYPATH=c:\yourrepository
+
+rem This is the regular expression that will be used to pick out the bug
+rem numbers from your log messages. Technically, every (capture) group
+rem that evaluates to a non-empty string will be interpreted as a bug number.
+
+rem By default, look for the bugid as digits at the start of the log message
+rem or as bugid# followed by digits anywhere in the log message.
+
+set BUGIDPATTERN="^([0-9]+)|bugid#([0-9]+)"
+
+rem Specify there the commit log message should be stored in the database
+rem so that it can be displayed in the file revisions user interface.
+rem The valid choices are true and false.
+
+set STOREREVISIONCOMMENT=true
+
+rem NOTE: CONNECTIONSTRING is an ADO connection string, not an ADO.NET
+rem connection string.  Provider must be SQLOLEDB.
+
+@set CONNECTIONSTRING="Provider=SQLOLEDB; Data Source=(local); Initial Catalog=btnet; User ID=; Password=;"
+
+rem --- End configuration ---
+
+if not exist "%SUBVERSIONBINPATH%\svnlook.exe" (
+   echo Could not use SUBVERSIONBINPATH to find Subversion. Edit pre-commit.cmd. 1>&2
+   goto fail
+)
+
+if not exist "%REPOSITORYPATH%\hooks\btnet_pre_commit.wsf" (
+   echo Could not use REPOSITORYPATH to find btnet_pre_commit.wsf. Edit pre-commit.cmd. 1>&2
+   goto fail
+)
+
+rem These statements removes the surrounding quotes from the above definitions.
+for %%I in (%BUGIDPATTERN%) do set BUGIDPATTERN=%%~I
+for %%I in (%CONNECTIONSTRING%) do set CONNECTIONSTRING=%%~I
+
+rem --- Put additional commands here ---
+
+rem Preferably, do this last because it will write to the BugTracker.NET SQL
+rem database and this part will not be rolled back if a problem happens after
+rem this line.
+cscript "%REPOSITORYPATH%\hooks\btnet_pre_commit.wsf" "%1" "%2" || goto fail
+
+:succeed
+
+exit 0
+
+:fail
+
+exit 1

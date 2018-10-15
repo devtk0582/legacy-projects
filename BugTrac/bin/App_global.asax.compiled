@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<preserve resultType="8" virtualPath="/BugTrack/global.asax" hash="ffffffffb02a4559" filehash="ffffc1d70be06172" flags="150000" assembly="App_global.asax" type="ASP.global_asax">
+    <filedeps>
+        <filedep name="/BugTrack/global.asax" />
+    </filedeps>
+</preserve>

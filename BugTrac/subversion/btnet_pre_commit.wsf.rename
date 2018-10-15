@@ -1,0 +1,306 @@
+<package><job>
+<reference object="WScript.Shell" />
+<reference object="ADODB.Connection" />
+<reference object="ADODB.Command" />
+<reference object="ADODB.RecordSet" />
+<script language="VBScript">
+
+
+' An alternative script for BugTracker.NET 
+' Jason Kresowaty, Oct 2007
+
+
+
+' HOW TO USE THIS SCRIPT
+
+' This script is a Subversion "pre-commit hook" that stores information in the
+' bug_file_revisions table of the BugTracker.NET database correlating commits
+' to bugs.
+
+' Remove the .rename suffix and place this in the hooks directory of your
+' repository. You will need to create a "pre-commit.cmd" batch file in your
+' repository hooks directory along side this file. TYPICALLY, manually editing 
+' this file is no longer required. Make configuration changes in
+' pre-commit.cmd in your hooks directory.
+
+' It looks for bug numbers in the "svn commit" message.  More than one bug may
+' be mentioned in the message.  Two formats are supported:
+'  1. The bug number may be at the very beginning of the message.  This is what
+'     BugTracker.NET has historically supported.
+'  2. The bug number may appear anywhere in the message if prefixed with a #
+'     sign.  This is similar to other bug tracking software.
+
+' NOTE: This script uses the "svnlook youngest" command.  If two users commit
+' to the repository simultaneously, this script might store the wrong revision
+' number in the bug tracking database. Hopefully, this will be rare.
+
+' (Using .wsf syntax instead of .vbs so that runtime errors automatically set a
+' non-zero exit status. This is required so that svn will roll back the commit
+' on failure.)
+
+option explicit
+
+dim shell
+dim subversionbinpath
+dim connection_string
+dim pattern
+dim store_revision_comment
+
+' read environment variables
+
+set shell = wscript.createobject("WScript.Shell")
+subversionbinpath = shell.environment("Process")("SUBVERSIONBINPATH")
+connection_string = shell.environment("Process")("CONNECTIONSTRING")
+pattern = shell.environment("Process")("BUGIDPATTERN")
+store_revision_comment = shell.environment("Process")("STOREREVISIONCOMMENT")
+
+if subversionbinpath = "" then
+	wscript.stderr.writeline("SUBVERSIONBINPATH environment variable not set. Edit the btnet_pre_commit.cmd file.")
+	wscript.quit(1)
+end if
+if connection_string = "" then
+	wscript.stderr.writeline("SUBVERSIONBINPATH environment variable not set. Edit the btnet_pre_commit.cmd file.")
+	wscript.quit(1)
+end if
+if store_revision_comment <> "true" and store_revision_comment <> "false" then
+	wscript.stderr.writeline("STOREREVISIONCOMMENT environment variable not set to ""true"" or ""false"". Edit the btnet_pre_commit.cmd file.")
+	wscript.quit(1)
+end if
+
+' determine paths
+
+dim svnlook_path
+svnlook_path = """" & subversionbinpath & "\svnlook.exe" & """"
+
+dim repos
+dim rev
+dim tran
+repos = """" & wscript.arguments(0) & """"
+tran = wscript.arguments(1)
+
+dim cmd
+dim results_object
+dim youngest
+dim log_string
+dim changed_string
+dim author_string
+
+' run the svnlook youngest command
+cmd = svnlook_path & " youngest " & repos
+set results_object = shell.exec(cmd)
+youngest = results_object.stdout.readall
+do while results_object.status = wshRunning
+	wscript.sleep(100)
+loop
+if results_object.exitcode <> 0 then
+	wscript.stderr.writeline("svn command failed: " & cmd)
+	wscript.quit(1)
+end if
+rev = youngest + 1
+
+' run the svnlook log command
+cmd = svnlook_path & " log -t " & tran & " " & repos 
+set results_object = shell.exec(cmd)
+log_string = results_object.stdout.readall
+do while results_object.status = wshRunning
+	wscript.sleep(100)
+loop
+if results_object.exitcode <> 0 then
+	wscript.stderr.writeline("svn command failed: " & cmd)
+	wscript.quit(1)
+end if
+
+' run the svnlook changed command
+cmd = svnlook_path & " changed -t " & tran & " " & repos 
+set results_object = shell.exec(cmd)
+changed_string = results_object.stdout.readall
+do while results_object.status = wshRunning
+	wscript.sleep(100)
+loop
+if results_object.exitcode <> 0 then
+	wscript.stderr.writeline("svn command failed: " & cmd)
+	wscript.quit(1)
+end if
+
+
+'run the svnlook author command
+cmd = svnlook_path & " author -t " & tran & " " & repos
+set results_object = shell.exec(cmd)
+author_string = results_object.stdout.readall
+do while results_object.status = wshRunning
+	wscript.sleep(100)
+loop
+if results_object.exitcode <> 0 then
+	wscript.stderr.writeline("svn command failed: " & cmd)
+	wscript.quit(1)
+end if
+
+dim matches
+dim bugidcount
+dim bugids()
+dim bugid
+dim match
+dim submatch
+dim found
+
+bugidcount = 0
+
+' Search the log_string for all matches to the specified pattern.
+' The pattern should contain one or more (capture) groups. All
+' capture groups that evaluate to a non-empty string will be
+' interpreted as bugids.
+
+dim re
+set re = new regexp
+re.pattern = pattern
+re.global = true
+
+set matches = re.execute(log_string)
+
+if matches.count > 0 then
+	for each match in matches
+		for each bugid in match.submatches
+			if bugid <> "" then
+				found = false
+				for i = 0 to bugidcount - 1
+					if bugids(i) = bugid then
+						found = true
+						exit for
+					end if
+				next
+				
+				if not found then
+					redim preserve bugids(bugidcount)
+					bugids(bugidcount) = bugid
+					bugidcount = bugidcount + 1
+				end if
+			end if
+		next
+	next
+end if
+
+if bugidcount = 0 then
+   'nothing to do
+   wscript.quit(0)
+end if
+
+' open database connection and begin transaction
+
+dim conn
+dim scmd
+
+set conn = createobject("adodb.connection")
+conn.open(connection_string)
+conn.begintrans()
+
+dim haveerrors
+haveerrors = false
+
+dim i
+dim lines
+dim cols(1)
+dim action
+dim file
+dim sql
+dim rs
+
+for each bugid in bugids
+	' check that the bugs affected exist before we do any inserts
+	
+	sql = "select count(*) from bugs where bg_id = ?"
+	
+	set scmd = createobject("adodb.command")
+	scmd.activeconnection = conn
+	scmd.commandtext = sql
+	scmd.parameters.append(scmd.createparameter("bug", adInteger, , , bugid))
+
+	set rs = scmd.execute()
+	
+	' if count(*) <> 1, then bug not found
+	if rs(0) <> 1 then
+		wscript.stderr.writeline("Bug #" & bugid & " not found in the tracking system.")
+		haveerrors = true
+	end if	
+next
+
+if haveerrors then
+	wscript.quit(1)
+end if
+
+' insert the revision_comment; the one comment is shared by all bugids above
+
+dim rcid
+
+if store_revision_comment = "true" then
+	sql = "set nocount on "
+	sql = sql & " insert into revision_comments "
+	sql = sql & " (rc_comment) "
+	sql = sql & " values (?) "
+	sql = sql & " select scope_identity() as rc_id"
+
+	set scmd = createobject("adodb.command")
+	scmd.activeconnection = conn
+	scmd.commandtext = sql
+	scmd.parameters.append(scmd.createparameter("comment", adLongVarWChar, , len(log_string), log_string))
+
+	set rs = scmd.execute()
+
+	rcid = rs("rc_id")
+else
+	rcid = null
+end if
+
+if isnull(rcid) then
+	wscript.stderr.writeline("rc_id was not returned from the database.")
+	wscript.quit(1)
+end if
+
+' insert the revision records
+
+lines = split(changed_string, vbcrlf)
+
+for each bugid in bugids
+	' loop through the files, the output of the "changed" command
+	if ubound(lines) > 0 then
+		for i = 0 to ubound(lines) - 1
+			cols(0) = mid(lines(i), 1, 2)
+			cols(1) = mid(lines(i), 5)
+			select case cols(0)
+				case "A "
+					action = "added"
+				case "U ", "UU", " U"
+					action = "updated"
+				case "D "
+					action = "deleted"
+				case else
+					action = cols(0)
+			end select
+			file = cols(1)
+
+			sql = "insert into bug_file_revisions "
+			sql = sql & " (bfr_bug, bfr_revision, bfr_action, bfr_file, bfr_date, bfr_author, bfr_rc) "
+			sql = sql & " values (?, ?, ?, ?, getdate(), ?, ?)"
+
+			set scmd = createobject("adodb.command")
+			scmd.activeconnection = conn
+			scmd.commandtext = sql
+			scmd.parameters.append(scmd.createparameter("bug", adInteger, , , bugid))
+			scmd.parameters.append(scmd.createparameter("rev", adInteger, , , rev))
+			scmd.parameters.append(scmd.createparameter("act", adVarWChar, , 8, action))
+			scmd.parameters.append(scmd.createparameter("file", adVarWChar, , 400, file))
+			scmd.parameters.append(scmd.createparameter("author", adVarWChar, , 100, author_string))
+			scmd.parameters.append(scmd.createparameter("rc", adInteger, , , rcid))
+
+			scmd.execute()
+		next
+	end if
+next
+
+' commit transaction and close database connection
+
+conn.committrans()
+conn.close()
+
+wscript.quit(0) ' success
+
+</script></job></package>
