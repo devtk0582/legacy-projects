@@ -1,0 +1,31 @@
+﻿<controls:ChildWindow x:Class="I.M.S.DemoChild"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           Width="400" Height="300" 
+           Title="DemoChild" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="123*" />
+            <ColumnDefinition Width="255*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="52*" />
+            <RowDefinition Height="54*" />
+            <RowDefinition Height="70*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="4" Grid.Column="1" />
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="4" Grid.Column="1" />
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="label1" VerticalAlignment="Top" Width="120" Content="Item Name" />
+        <sdk:Label Content="Item Barcode" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="label2" VerticalAlignment="Top" Width="120" Grid.Row="1" />
+        <sdk:Label Content="Item Qty" Height="28" HorizontalAlignment="Left" Margin="12,13,0,0" Name="label3" VerticalAlignment="Top" Width="120" Grid.Row="2" />
+        <sdk:Label Content="Scan Date" Height="28" HorizontalAlignment="Left" Margin="12,23,0,0" Name="label4" VerticalAlignment="Top" Width="120" Grid.Row="3" />
+        <TextBox Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="33,12,0,0" Name="txtName" VerticalAlignment="Top" Width="165" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="33,17,0,0" Name="txtCode" VerticalAlignment="Top" Width="165" Grid.Column="1" Grid.Row="1" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="33,13,0,0" Name="txtQty" VerticalAlignment="Top" Width="165" Grid.Column="1" Grid.Row="2" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="33,19,0,0" Name="txtDate" VerticalAlignment="Top" Width="165" Grid.Column="1" Grid.Row="3" />
+    </Grid>
+</controls:ChildWindow>

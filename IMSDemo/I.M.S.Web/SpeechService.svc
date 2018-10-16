@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="I.M.S.Web.SpeechService" CodeBehind="SpeechService.svc.cs" %>

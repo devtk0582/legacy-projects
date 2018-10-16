@@ -1,0 +1,53 @@
+﻿<controls:ChildWindow x:Class="I.M.S.ItemDetailCW"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           Width="745" Height="393" 
+           Title="Item Details" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Button x:Name="CancelButton" Content="Close" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />
+        <Button x:Name="OKButton" Content="Export To Excel" Click="OKButton_Click" Width="103" Height="23" HorizontalAlignment="Right" Margin="0,12,92,0" Grid.Row="1" />
+        
+        <sdk:Label Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="label1" VerticalAlignment="Top" Width="210" FontSize="14" FontWeight="Bold" Content="Item Detail Report" />
+        <sdk:DataGrid AutoGenerateColumns="False" Height="234" HorizontalAlignment="Left" Margin="12,76,0,0" Name="dgItemDetails" VerticalAlignment="Top" Width="324" IsReadOnly="True">
+            <sdk:DataGrid.Columns>
+                <sdk:DataGridTextColumn Binding="{Binding Qty}" Header="Quantity" Width="82"></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding="{Binding ScanDate}" Header="Scan Date" Width="82"></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding="{Binding Location}" Header="Location" Width="82"></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding="{Binding Employee}" Header="Employee" Width="82"></sdk:DataGridTextColumn>
+            </sdk:DataGrid.Columns>
+        </sdk:DataGrid>
+        <sdk:Label Height="22" HorizontalAlignment="Left" Margin="465,8,0,0" Name="label2" VerticalAlignment="Top" Width="100" Content="Item Name:" FontWeight="Bold" FontSize="12" />
+        <sdk:Label Content="Item Code:" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="465,36,0,0" Name="label3" VerticalAlignment="Top" Width="100" />
+        <sdk:Label Content="Item Details:" FontSize="14" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="12,48,0,0" Name="label5" VerticalAlignment="Top" Width="134" />
+        <Rectangle Height="150" HorizontalAlignment="Left" Margin="365,114,0,0" Name="rectangle1" Stroke="Black" StrokeThickness="1" VerticalAlignment="Top" Width="50" >
+            <Rectangle.Fill>
+                <ImageBrush x:Name="imgItem"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,8,62,0" Name="lblItemName" VerticalAlignment="Top" Width="86" />
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,36,62,0" Name="lblItemCode" VerticalAlignment="Top" Width="86" />
+        <sdk:Label Content="Full Size:" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="465,64,0,0" Name="label6" VerticalAlignment="Top" Width="100" />
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,0,62,237" Name="lblFullSize" VerticalAlignment="Bottom" Width="86" />
+        <sdk:Label Content="Full Bottle:" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="465,122,0,0" Name="label7" VerticalAlignment="Top" Width="100" />
+        <sdk:Label Content="2/3 Bottle:" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="465,178,0,0" Name="label4" VerticalAlignment="Top" Width="100" />
+        <sdk:Label Content="3/4 Bottle:" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="465,150,0,0" Name="label8" VerticalAlignment="Top" Width="100" />
+        <sdk:Label Content="1/2 Bottle:" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="465,206,0,0" Name="label9" VerticalAlignment="Top" Width="100" />
+        <sdk:Label Content="1/3 Bottle:" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="465,234,0,0" Name="label10" VerticalAlignment="Top" Width="100" />
+        <sdk:Label Content="1/4 Bottle:" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="465,262,0,0" Name="label11" VerticalAlignment="Top" Width="100" />
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,0,62,180" Name="lblSize1" VerticalAlignment="Bottom" Width="86" />
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,146,62,0" Name="lblSize2" VerticalAlignment="Top" Width="86" />
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,0,62,123" Name="lblSize3" VerticalAlignment="Bottom" Width="86" />
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,0,62,95" Name="lblSize4" VerticalAlignment="Bottom" Width="86" />
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,234,62,0" Name="lblSize5" VerticalAlignment="Top" Width="86" />
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,0,62,39" Name="lblSize6" VerticalAlignment="Bottom" Width="86" />
+        <sdk:Label Content="Other Size:" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Left" Margin="465,288,0,0" Name="label12" VerticalAlignment="Top" Width="100" />
+        <sdk:Label Content="0" FontSize="12" FontWeight="Bold" Height="22" HorizontalAlignment="Center" Margin="575,0,62,9" Name="lblSize7" VerticalAlignment="Bottom" Width="86" />
+    </Grid>
+</controls:ChildWindow>
