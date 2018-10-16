@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{706AE3FF-EB2F-4498-88A3-FB7B29F8785C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DashBoardApp</RootNamespace>
+    <AssemblyName>DashBoardApp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\..\..\..\..\Desktop\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="FusionCharts">
+      <HintPath>..\..\..\..\Project_Ke\Jadcore_v3\Jadcore.UI\bin\FusionCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Charts\Column3D.swf" />
+    <Content Include="Charts\FCF_Area2D.swf" />
+    <Content Include="Charts\FCF_Bar2D.swf" />
+    <Content Include="Charts\FCF_Candlestick.swf" />
+    <Content Include="Charts\FCF_Column2D.swf" />
+    <Content Include="Charts\FCF_Column3D.swf" />
+    <Content Include="Charts\FCF_Doughnut2D.swf" />
+    <Content Include="Charts\FCF_Funnel.swf" />
+    <Content Include="Charts\FCF_Gantt.swf" />
+    <Content Include="Charts\FCF_Line.swf" />
+    <Content Include="Charts\FCF_MSArea2D.swf" />
+    <Content Include="Charts\FCF_MSBar2D.swf" />
+    <Content Include="Charts\FCF_MSColumn2D.swf" />
+    <Content Include="Charts\FCF_MSColumn2DLineDY.swf" />
+    <Content Include="Charts\FCF_MSColumn3D.swf" />
+    <Content Include="Charts\FCF_MSColumn3DLineDY.swf" />
+    <Content Include="Charts\FCF_MSLine.swf" />
+    <Content Include="Charts\FCF_Pie2D.swf" />
+    <Content Include="Charts\FCF_Pie3D.swf" />
+    <Content Include="Charts\FCF_StackedArea2D.swf" />
+    <Content Include="Charts\FCF_StackedBar2D.swf" />
+    <Content Include="Charts\FCF_StackedColumn2D.swf" />
+    <Content Include="Charts\FCF_StackedColumn3D.swf" />
+    <Content Include="Charts\Pie3D.swf" />
+    <Content Include="css\dashboard.css" />
+    <Content Include="css\report.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Forms\CertificateForm.aspx" />
+    <Content Include="Forms\PrintMovies.aspx" />
+    <Content Include="Graphs\MoviesGraph.aspx" />
+    <Content Include="Graphs\StatesGraph.aspx" />
+    <Content Include="Graphs\TeamsGraph.aspx" />
+    <Content Include="Graphs\UsersGraph.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="images\arrow_down.gif" />
+    <Content Include="images\arrow_up.gif" />
+    <Content Include="images\Calendar.png" />
+    <Content Include="images\FooterLogo.gif" />
+    <Content Include="images\HeaderLogo.gif" />
+    <Content Include="images\paging-first.gif" />
+    <Content Include="images\paging-last.gif" />
+    <Content Include="images\PDFImg.jpg" />
+    <Content Include="images\Preview.gif" />
+    <Content Include="images\rating_on.gif" />
+    <Content Include="images\Report.gif" />
+    <Content Include="images\log-in-title.gif" />
+    <Content Include="images\LoginBG.gif" />
+    <Content Include="images\MainBG.gif" />
+    <Content Include="images\MainBG2.gif" />
+    <Content Include="images\Movies.gif" />
+    <Content Include="images\star.png" />
+    <Content Include="images\stars_gray.gif" />
+    <Content Include="images\States.gif" />
+    <Content Include="images\Teams.gif" />
+    <Content Include="images\Users.gif" />
+    <Content Include="MailTemplates\ForgotPW.htm" />
+    <Content Include="Reporting\MoviesReport.aspx" />
+    <Content Include="Reporting\StatesReport.aspx" />
+    <Content Include="Reporting\TeamsReport.aspx" />
+    <Content Include="Reporting\UsersReport.aspx" />
+    <Content Include="Reports\StatePopulationReport.aspx" />
+    <Content Include="Reports\StateUsersReport.aspx" />
+    <Content Include="Reports\TeamChampsReport.aspx" />
+    <Content Include="Reports\TypeMoviesReport.aspx" />
+    <Content Include="Scripts\FusionCharts.js" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="UserControls\AddEditMovie.ascx" />
+    <Content Include="UserControls\AddEditState.ascx" />
+    <Content Include="UserControls\AddEditTeam.ascx" />
+    <Content Include="UserControls\AddEditUser.ascx" />
+    <Content Include="UserControls\Register.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CertificateForm.aspx.cs">
+      <DependentUpon>CertificateForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\CertificateForm.aspx.designer.cs">
+      <DependentUpon>CertificateForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMaster.master.cs">
+      <DependentUpon>FormMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMaster.master.designer.cs">
+      <DependentUpon>FormMaster.master</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintMovies.aspx.cs">
+      <DependentUpon>PrintMovies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintMovies.aspx.designer.cs">
+      <DependentUpon>PrintMovies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Graphs\GraphMaster.master.cs">
+      <DependentUpon>GraphMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Graphs\GraphMaster.master.designer.cs">
+      <DependentUpon>GraphMaster.master</DependentUpon>
+    </Compile>
+    <Compile Include="Graphs\MoviesGraph.aspx.cs">
+      <DependentUpon>MoviesGraph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Graphs\MoviesGraph.aspx.designer.cs">
+      <DependentUpon>MoviesGraph.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Graphs\StatesGraph.aspx.cs">
+      <DependentUpon>StatesGraph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Graphs\StatesGraph.aspx.designer.cs">
+      <DependentUpon>StatesGraph.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Graphs\TeamsGraph.aspx.cs">
+      <DependentUpon>TeamsGraph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Graphs\TeamsGraph.aspx.designer.cs">
+      <DependentUpon>TeamsGraph.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Graphs\UsersGraph.aspx.cs">
+      <DependentUpon>UsersGraph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Graphs\UsersGraph.aspx.designer.cs">
+      <DependentUpon>UsersGraph.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\MoviesReport.aspx.cs">
+      <DependentUpon>MoviesReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reporting\MoviesReport.aspx.designer.cs">
+      <DependentUpon>MoviesReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportingMaster.master.cs">
+      <DependentUpon>ReportingMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reporting\ReportingMaster.master.designer.cs">
+      <DependentUpon>ReportingMaster.master</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\StatesReport.aspx.cs">
+      <DependentUpon>StatesReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reporting\StatesReport.aspx.designer.cs">
+      <DependentUpon>StatesReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\TeamsReport.aspx.cs">
+      <DependentUpon>TeamsReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reporting\TeamsReport.aspx.designer.cs">
+      <DependentUpon>TeamsReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\UsersReport.aspx.cs">
+      <DependentUpon>UsersReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reporting\UsersReport.aspx.designer.cs">
+      <DependentUpon>UsersReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportMaster.Master.cs">
+      <DependentUpon>ReportMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportMaster.Master.designer.cs">
+      <DependentUpon>ReportMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StatePopulationReport.aspx.cs">
+      <DependentUpon>StatePopulationReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\StatePopulationReport.aspx.designer.cs">
+      <DependentUpon>StatePopulationReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\StateUsersReport.aspx.cs">
+      <DependentUpon>StateUsersReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\StateUsersReport.aspx.designer.cs">
+      <DependentUpon>StateUsersReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TeamChampsReport.aspx.cs">
+      <DependentUpon>TeamChampsReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TeamChampsReport.aspx.designer.cs">
+      <DependentUpon>TeamChampsReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TypeMoviesReport.aspx.cs">
+      <DependentUpon>TypeMoviesReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TypeMoviesReport.aspx.designer.cs">
+      <DependentUpon>TypeMoviesReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddEditMovie.ascx.cs">
+      <DependentUpon>AddEditMovie.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddEditMovie.ascx.designer.cs">
+      <DependentUpon>AddEditMovie.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddEditState.ascx.cs">
+      <DependentUpon>AddEditState.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddEditState.ascx.designer.cs">
+      <DependentUpon>AddEditState.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddEditTeam.ascx.cs">
+      <DependentUpon>AddEditTeam.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddEditTeam.ascx.designer.cs">
+      <DependentUpon>AddEditTeam.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddEditUser.ascx.cs">
+      <DependentUpon>AddEditUser.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddEditUser.ascx.designer.cs">
+      <DependentUpon>AddEditUser.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Register.ascx.cs">
+      <DependentUpon>Register.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Register.ascx.designer.cs">
+      <DependentUpon>Register.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="PDFFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DashBoardBLL\DashBoardBLL.csproj">
+      <Project>{37F09FBC-F8B6-4AF3-BF1A-95D204D3A8C2}</Project>
+      <Name>DashBoardBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Graphs\GraphMaster.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\ReportMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Forms\FormMaster.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reporting\ReportingMaster.master" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55983</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

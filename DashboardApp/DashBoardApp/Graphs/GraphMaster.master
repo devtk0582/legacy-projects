@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GraphMaster.master.cs"
+    Inherits="DashBoardApp.Graphs.GraphMaster" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script language="javascript" type="text/jscript" src="../Scripts/FusionCharts.js"></script>
+    <script type="text/javascript">
+        function makeNewWindow(a) {
+            windowFeatures = "scrollbars=yes,top=0,left=0,resizable=yes,width=" + (screen.width) + ",height=" + (screen.height);
+            newWindow = window.open(a, "", windowFeatures)
+            newWindow.focus();
+        }
+
+        function Validate(StartDate, EndDate, PopUpMsg) {
+            var StartDate = document.getElementById(StartDate);
+            var EndDate = document.getElementById(EndDate);
+            var Msg = document.getElementById(PopUpMsg);
+            if (StartDate.value == '') {
+                Msg.innerText = "Start Date Required. Please Enter Start Date";
+                return false;
+            }
+            else if (EndDate.value == '') {
+                Msg.innerText = "End Date Required. Please Enter End Date";
+                return false;
+            }
+            else if (StartDate.value > EndDate.value) {
+                Msg.innerText = "Start Date must be less than or equal to End Date. Please insert Start Date and End Date correctly";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div style="height: 650px; background: #FFF url('../images/MainBG2.gif') repeat-x;">
+        <table width="100%">
+            <tr>
+                <td align="left">
+                    <asp:Label ID="lblErr" runat="server" Font-Bold="true" ForeColor="Black"></asp:Label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td>
+                    <table width="100%" style="height: 100%;">
+                        <tr>
+                            <td>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</asp:Content>

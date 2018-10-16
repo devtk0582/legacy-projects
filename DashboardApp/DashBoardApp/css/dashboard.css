@@ -1,0 +1,475 @@
+﻿.stylesheet
+        {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            line-height: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-align: left;
+            border: thin solid #CCC;
+            list-style-type: square;
+            z-index: auto;
+            width: 900px;
+            height: 600px;
+            background: #000 url('../images/MainBG.gif') repeat-x;
+            color: #0066FF;
+        }
+        
+a:link
+{
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+        
+        .popupBG
+{
+    background-color: #333333;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+}
+.popupBG2
+{
+    background-color: #333333;
+    filter: alpha(opacity=10);
+    opacity: 0.1;
+}
+.modalPopup
+{
+    background-color: #FFFFFF;
+    border: solid 1px #CCCCCC;
+    padding: 3px;
+}
+        
+/* Global Page Styles */
+
+.titleStyle
+{
+    font-weight:bold;
+    font-family: Georgia;
+    color: Maroon;/*#0357B8;*/
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.lbPaddingStyle
+{
+    background-color: #86BF2E;
+    font-size: 10pt;
+    color: White;
+    border:1px solid #000000;
+    text-decoration:none;
+    padding: 3px 10px 3px 10px;
+}
+.mainTableStyle
+{
+    padding: 5px 10px 5px 10px;
+    height: 400px;
+    font-family: Georgia;
+    color: #1F1F1F;
+    font-size: 12px;
+}
+
+.inputTransStyle input
+{
+    background-color: transparent;
+}
+
+.textbox
+{
+   background-color: White;
+}
+
+.ddlStyle
+{
+    border: 1px solid Black;
+}
+
+.rblStyle
+{
+    font-size: 12px;
+    font-family: Verdana;
+    color: Blue;
+}
+
+/* User Control Style */
+
+   .PopupFormTitleStyle
+{
+    background-color: #AB3C2B;
+    color: White;
+    height: 25px;
+    padding: 0 3px 0 3px;
+    font-weight: bold;
+}
+
+.PopupFormBG
+{
+	border:solid 1px #73c8f0;
+	background-color: #394B61;
+	height: 100%;
+	width: 100%;
+	color: White;
+	text-align:left;
+}
+
+
+
+.PopupFormButton
+{
+    background-color: #A63723;/*#86BF2E;*/
+    font-size: 10pt;
+    color: White;
+    border:1px solid #000000;
+    text-decoration:none;
+    padding: 3px 10px 3px 10px;
+    border-radius: 5px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 5px;
+}
+
+.PopUpFormMainTbl
+{
+    text-align: left;
+}
+
+
+/************************/
+
+.msgStyle
+{
+    font-size: 14px; 
+    color: #03336F;
+}
+
+.linkButton
+{
+    background-color: #1E73DD;
+    padding: 3px 5px 3px 5px;
+    margin: 0 5px 0 5px;
+    font-family: Candara;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/*  Menus  */
+
+ul#menu  
+{
+    width: 100%;
+	font-size: 11px; 
+	font-family: "Lucida Grande", Verdana, sans-serif; 
+	font-weight: bold; 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0;
+	text-align: center; 
+}
+ul#menu li {
+	display: block; 
+	float: left; 
+	margin: 0 6px 0 0; 
+}
+ul#menu li a {    
+	color: #FFFFFB; 
+	text-decoration: none; 
+	display: block; 
+	float: left; 
+	padding: 0 35px 0;
+	margin: 10px 0 0 5px; 
+	background-color: #479BE3;
+	}
+ul#menu li a:hover {
+	color: #005DCE;
+}
+ul#menu li a.currentMainMenu{ 
+	background-color: #A7D6FF; 
+	color: Black;
+
+ }
+	
+	
+
+	
+ul#menu1 
+{
+    text-align: center;
+    width: 100%;
+	font-size: 11px; 
+	font-family: "Lucida Grande", Verdana, sans-serif; 
+	font-weight: bold; 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+}
+ul#menu1 li {
+	display: block; 
+	float: left; 
+	margin:0 3px 0 0; 
+}
+ul#menu1 li a { 
+	color: White; 
+	text-decoration: none; 
+	display: block; 
+	float: left; 
+	padding: 0 35px 0; 
+	margin: 10px 0 0 5px; 
+	background-color: #848484; 
+	}
+ul#menu1 li a:hover {
+	color: #005DCE;
+	}
+ul#menu1 li a.currentSubMenu{ 
+	background-color: White; 
+	color: Black;
+	}
+	
+
+.masterMenu{ 
+	display: block; 
+	float: left; 
+	margin: 0px 40px 0px 0px;
+	}
+
+
+.masterMenu a   
+{
+    width: 150px;
+    background-color: Maroon;
+    height: 22px;  
+	color: #CFF; 
+	text-decoration: none; 
+	display: block; 
+	float: left; 
+	line-height: 200%; 
+	margin-top: 18px;
+	padding: 5px 15px 5px 15px; 
+}
+	
+	.masterMenu a img
+	{
+	    padding: 0 10px 0 5px;
+	    width: 25px;
+    height: 25px;
+	}
+.masterMenu a:hover {
+	color: #000;
+	background-color: #FFF;
+	text-decoration: none;
+	}
+.masterMenu a.current{ 
+	background-color:#FFF; 
+	color:#000;
+	}
+
+.masterSubMenu
+{
+    width: 250px;
+    font-size: 12px;
+}
+
+.masterSubMenu a
+{
+    color: #668FCC;
+    font-family: Lucida Grande, Verdana, sans-serif;
+    font-weight: bold;
+    text-decoration: none; 
+    padding:  8px 50px 8px 10px;
+    
+}
+
+.masterSubMenu tr
+{
+    background-color: #E3EEFF;
+    text-align: left; 
+    width: 150px;
+     height: 28px;          
+
+}
+
+.masterSubMenu a:hover
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.master3rdMenu
+{
+    width: 180px;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.master3rdMenu a
+{
+    color: #FFF8DC;
+    font-family: Lucida Grande, Verdana, sans-serif;
+    font-weight: bold;
+    text-decoration: none; 
+    padding:  8px 40px 8px 10px;
+    
+}
+
+.master3rdMenu tr
+{
+    background-color: #6495ED;
+    text-align: left; 
+    width: 180px;
+     height: 28px;          
+
+}
+
+.master3rdMenu a:hover
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.master4thMenu
+{
+    width: 180px;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.master4thMenu a
+{
+    color: #DCDCDC;
+    font-family: Lucida Grande, Verdana, sans-serif;
+    font-weight: bold;
+    text-decoration: none; 
+    padding:  8px 40px 8px 10px;
+    
+}
+
+.master4thMenu tr
+{
+    background-color: #483D8B;
+    text-align: left; 
+    width: 180px;
+     height: 28px;          
+
+}
+
+.master4thMenu a:hover
+{
+    color: #FFF;
+    text-decoration: none;
+}
+
+
+
+.masterBg
+{
+
+    width: 100%;
+	height: 50px;
+	background-color: #215DB5;
+	font-size: 12px; 
+	font-family: "Lucida Grande", Verdana, sans-serif; 
+	font-weight: bold; 
+	list-style-type: none; 
+	margin: 0; 
+}
+
+ 
+table.masterMenu tr td table tr td 
+{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.menuHover a
+{
+    color: #000;
+	background-color: #FFF;
+	text-decoration: none;
+}
+
+.menuHover a img
+{
+    width: 32px;
+    height: 32px;
+}
+
+
+  .cssbutton {
+	background: #003366;
+	padding: 1px;
+	font-family: verdana;
+	font-size: x-small;
+	
+	border : 1px solid #aaa;
+	color: white;
+}
+
+/*******************/
+
+/* Graph style  */
+.graphTitle
+{
+    font-weight: bold;
+    font-size: 12px;
+    font-family: Verdana;
+    color: White;
+    background-color: #4B0082;
+    padding: 1px 10px 1px 10px;
+    text-decoration: none;
+}
+
+.graphText
+{
+    font-size: 12px;
+    color: Black;
+    font-family: Verdana;
+    font-weight: normal;
+}
+
+.dlItemStyle
+{
+  background-color: #F7F6F3;
+  color: #333333;
+  text-align: center;
+}
+
+.dlHeaderStyle
+{
+    color: White;
+    background-color: #5D7B9D;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dlAlterItemStyle
+{
+    background-color: White;
+    border-color: #D3D3D3;
+    border-style: solid;
+    color: #284775;
+    text-align: center;
+}
+
+.dlFooterStyle
+{
+   background-color: #5D7B9D;
+   font-weight: bold;
+   color: White;
+}
+
+
+/*****************/

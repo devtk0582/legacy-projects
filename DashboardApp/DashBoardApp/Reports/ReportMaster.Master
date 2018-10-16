@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ReportMaster.master.cs" Inherits="DashBoardApp.Reports.ReportMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table width="100%">
+            <tr>
+                <td>
+                    <table bgcolor="white" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="height: 10px">
+                                <table width="100%">
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr>
+                                        <td align="left" style="padding-left:20px">
+                                            <img alt="logo" src="../images/HeaderLogo.gif"/>
+                                        </td>
+                                        <td align="right" style="padding-right:20px">
+                                            <img alt="report" src="../images/Report.gif"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td style="height:400px;">
+                                <asp:Label ID="lblError" runat="server" ForeColor="Red" Font-Names="Verdana" Font-Size="Small"></asp:Label>
+                                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="font-size: smaller">
+                   Copyright (c) All rights reserved. Powered by <a href="http://www.jiushizhutk.com/">Ke Tang</a>
+                </td>
+            </tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

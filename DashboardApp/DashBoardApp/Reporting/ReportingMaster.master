@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ReportingMaster.master.cs" Inherits="DashBoardApp.Reporting.ReportingMaster" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<link rel="stylesheet" href="../css/report.css" type="text/css" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div style="height: 450px; background: #FFF url('../images/MainBG2.gif') repeat-x;">
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <asp:Label ID="lblErr" runat="server" Font-Bold="true" ForeColor="Black"></asp:Label>
+            </td>
+        </tr>
+        <tr valign="top">
+            <td>
+                <table width="100%" style="height: 100%;">
+                    <tr>
+                        <td>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder> 
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </table>
+    </div>
+</asp:Content>

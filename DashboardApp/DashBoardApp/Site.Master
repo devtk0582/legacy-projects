@@ -1,0 +1,112 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DashBoardApp.Site" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="css/dashboard.css" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    <center>
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+        </asp:ToolkitScriptManager>
+    <table width="90%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#2F374A">
+                        <tr>
+                            <td align="left" width="180">
+                                <asp:Image ID="imgHeader" runat="server" Width="160" Height="65" ImageUrl="~/images/HeaderLogo.gif" />
+                            </td>
+                            <td align="left">
+                                <asp:Label ID="lblHeader" runat="server" Font-Bold="true" ForeColor="White"></asp:Label>
+                            </td>
+                            <td align="right" width="180">
+                                <asp:Label ID="lblWelcome" runat="server" Text="Welcome" ForeColor="White"></asp:Label>
+                                <br />
+                                <asp:Label ID="lblDate" runat="server" ForeColor="White"></asp:Label>
+                                <br />
+                                <asp:LinkButton ID="lbLogOut" CssClass="logout" runat="server" 
+                                    ForeColor="White" onclick="lbLogOut_Click">Sign Out</asp:LinkButton>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%">
+                    <div align="left" class="masterBg">
+                                    <asp:Menu ID="MainMenu" runat="server" Orientation="Horizontal" SkipLinkText="" Target="_self"
+                                        MaximumDynamicDisplayLevels="4" StaticEnableDefaultPopOutImage="False"
+                                        PathSeparator="," DisappearAfter="0"
+                                        onmenuitemclick="MainMenu_MenuItemClick">
+                                        <Items>
+                                        <asp:MenuItem Text="Center">
+                                        <asp:MenuItem Text="Services" Value="1">
+                                        <asp:MenuItem Text="Graphs" Value="4">
+                                        <asp:MenuItem Text="Users" Value="5" NavigateUrl="~/Graphs/UsersGraph.aspx"></asp:MenuItem>
+                                        <asp:MenuItem Text="States" Value="4" NavigateUrl="~/Graphs/StatesGraph.aspx"></asp:MenuItem>
+                                        <asp:MenuItem Text="Movies" Value="5" NavigateUrl="~/Graphs/MoviesGraph.aspx"></asp:MenuItem>
+                                        <asp:MenuItem Text="Teams" Value="6" NavigateUrl="~/Graphs/TeamsGraph.aspx"></asp:MenuItem>
+                                        </asp:MenuItem>
+                                        <asp:MenuItem Text="PDF Forms" Value="2">
+                                        <asp:MenuItem Text="Print Movies" Value="9" NavigateUrl="~/Forms/PrintMovies.aspx"></asp:MenuItem>
+                                        </asp:MenuItem>
+                                        <asp:MenuItem Text="Reports" Value="3">
+                                        <asp:MenuItem Text="Movies Report" Value="11" NavigateUrl="~/Reporting/MoviesReport.aspx" />
+                                        <asp:MenuItem Text="States Report" Value="12" NavigateUrl="~/Reporting/StatesReport.aspx" />
+                                         <asp:MenuItem Text="Teams Report" Value="13" NavigateUrl="~/Reporting/TeamsReport.aspx" />
+                                         <asp:MenuItem Text="Users Report" Value="13" NavigateUrl="~/Reporting/UsersReport.aspx" />
+                                        </asp:MenuItem>
+                                        </asp:MenuItem>
+                                        <asp:MenuItem Text="Ke's Blog" NavigateUrl="http://www.jiushizhutk.com/wordpress" Target="_blank"></asp:MenuItem>
+                                        </asp:MenuItem>
+                                        </Items>
+                                        <StaticMenuStyle CssClass="masterMenu" />
+                                        <StaticSelectedStyle CssClass="current" />
+                                        <StaticHoverStyle CssClass="menuHover" />
+                                        <LevelMenuItemStyles>
+                                            <asp:MenuItemStyle CssClass="masterMenu" />
+                                            <asp:MenuItemStyle CssClass="masterSubMenu" />
+                                            <asp:MenuItemStyle CssClass="master3rdMenu" />
+                                            <asp:MenuItemStyle CssClass="master4thMenu" />
+                                        </LevelMenuItemStyles>
+                                    </asp:Menu>
+                                </div>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td >
+                <div style="height: 5px; background-color: Maroon;"></div>
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                
+                </td>
+            </tr>
+            <tr style="background-color: #2F374A;">
+                <td>
+                    <table width="100%" cellpadding="0" cellspacing="0" >
+                        <tr>
+                            <td align="left" width="180">
+                                <asp:Image ID="imgFooter" runat="server" Width="160" Height="65" ImageUrl="~/images/FooterLogo.gif" />
+                            </td>
+                            <td align="center">
+                                <asp:Label ID="lblFooter" Font-Bold="true" runat="server" Text="Copy Right @ Ke Tang 2012" ForeColor="White"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>     
+    </div>
+    </form>
+</body>
+</html>

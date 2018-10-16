@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ketestserver" Class="DashBoardDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ketestserver.db.8177974.hostedresource.com;Initial Catalog=ketestserver;Persist Security Info=True;User ID=ketestserver" SettingsObjectName="DashBoardBLL.Properties.Settings" SettingsPropertyName="ketestserverConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.States" Member="States">
+    <Type Name="State">
+      <Column Name="StateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StateName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="StateCode" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Area" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Population" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="State_Team" Member="Teams" ThisKey="StateID" OtherKey="TeamState" Type="Team" />
+      <Association Name="State_User" Member="Users" ThisKey="StateID" OtherKey="State" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Movies" Member="Movies">
+    <Type Name="Movie">
+      <Column Name="MovieID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MovieName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MovieDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MovieType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MovieComment" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Review" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="MovieType_Movie" Member="MovieType1" ThisKey="MovieType" OtherKey="TypeID" Type="MovieType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MovieTypes" Member="MovieTypes">
+    <Type Name="MovieType">
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="MovieType_Movie" Member="Movies" ThisKey="TypeID" OtherKey="MovieType" Type="Movie" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Teams" Member="Teams">
+    <Type Name="Team">
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TeamName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="TeamState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamStars" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Arena" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HeadCoach" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Champions" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Founded" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Team_User" Member="Users" ThisKey="TeamID" OtherKey="Team" Type="User" />
+      <Association Name="State_Team" Member="State" ThisKey="TeamState" OtherKey="StateID" Type="State" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StatesPopulation" Member="StatesPopulations">
+    <Type Name="StatesPopulation">
+      <Column Name="StateCode" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Population" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StateID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TeamChamps" Member="TeamChamps">
+    <Type Name="TeamChamp">
+      <Column Name="TeamName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Champions" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Team" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="State_User" Member="State1" ThisKey="State" OtherKey="StateID" Type="State" IsForeignKey="true" />
+      <Association Name="Team_User" Member="Team1" ThisKey="Team" OtherKey="TeamID" Type="Team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TypeMovies" Member="TypeMovies">
+    <Type Name="TypeMovie">
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MoviesCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StateUsers" Member="StateUsers">
+    <Type Name="StateUser">
+      <Column Name="StateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="UserCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.DB_Register" Method="DB_Register">
+    <Parameter Name="first_name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="last_name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="username" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="password" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="phone" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DB_GetStateUsers" Method="DB_GetStateUsers">
+    <Parameter Name="state_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DB_GetStateUsersResult">
+      <Column Name="Name" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="StateCode" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="TeamName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DB_GetStatePopulations" Method="DB_GetStatePopulations">
+    <Parameter Name="state_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DB_GetStatePopulationsResult">
+      <Column Name="StateName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="StateCode" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Population" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Area" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DB_GetTeamChampions" Method="DB_GetTeamChampions">
+    <Parameter Name="team_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DB_GetTeamChampionsResult">
+      <Column Name="TeamName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="StateCode" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Arena" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HeadCoach" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Champions" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Founded" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DB_GetTypeMovies" Method="DB_GetTypeMovies">
+    <Parameter Name="type_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DB_GetTypeMoviesResult">
+      <Column Name="TypeName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MovieName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MovieDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MovieComment" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DB_GetTypeMoviesFiltered" Method="DB_GetTypeMoviesFiltered">
+    <Parameter Name="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="endDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="DB_GetTypeMoviesFilteredResult">
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MoviesCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

@@ -8,3 +8,4 @@
 *.user
 *.xml
 /BugTrac/App_Data
+/DashboardApp/DashBoardBLL/obj/Debug

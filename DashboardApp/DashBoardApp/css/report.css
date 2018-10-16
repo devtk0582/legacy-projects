@@ -1,0 +1,171 @@
+﻿.gvHeaderStyle
+{
+    font-size: 12px;
+    background: #6690C0;  /*#307D7E;*/
+    color: White;
+    font-weight: bold;
+
+}
+
+.gvHeaderStyle th
+{
+   text-align: left;
+    color: White;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    border: solid 1px #fff; 
+}
+
+.gvHeaderStyle a
+{
+    color: White;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+.gvRowStyle
+{
+    background-color: #E3EAEB;
+    font-size: 12px;
+    color: Black;
+    border: solid 1px #fff; 
+}
+
+.gvRowStyle a
+{
+    text-align: left;
+    font-family: Verdana;
+    font-size: 12px;
+    text-decoration: none;
+    color: Black;
+}
+
+.gvRowStyle td
+{
+    font-size: 12px;
+    text-decoration: none;
+    color: Black;
+    border: solid 1px #fff; 
+    text-align: left;
+    font-family: Verdana;
+}
+
+
+.gvPagerStyle
+{
+   text-align: right;
+   background: #6690C0;  /*#307D7E;*/
+}
+
+.gvPagerStyle a
+{
+    color: Black;    
+    font-family: Arial;
+    font-weight: bold;    
+    padding: 0 5px 0 5px;  
+    text-decoration: none;
+    border: solid 1px Black; 
+    margin: 0 5px 0 5px;
+    background-color: White;
+}
+
+.gvPagerStyle a:hover
+{
+    text-decoration: underline;
+}
+
+.gvPagerStyle span
+{
+    background-color:#09151F;
+    color: #FFFFFF;    
+    font-family:Arial;
+    font-weight:bold;    
+    padding: 0 5px 0 5px;  
+    border: solid 1px Black;   
+    text-decoration: none;
+    margin: 0 5px 0 5px;
+}
+
+.gvAltRowStyle
+{
+    background-color: White;
+    font-size: 12px;
+    color: Black;
+}
+
+.gvAltRowStyle a
+{
+    text-align: left;
+    font-size: 12px;
+    text-decoration: none;
+    color: Black;
+    font-family: Verdana;
+}
+
+.gvAltRowStyle td
+{
+    font-family: Verdana;
+    font-size: 12px;
+    text-decoration: none;
+    color: Black;
+    border: solid 1px #fff; 
+    text-align: left;
+}
+
+.inputTransStyle input
+{
+    background-color: transparent;
+}
+
+.textbox
+{
+   background-color: White;
+}
+
+.ddlStyle
+{
+    border: 1px solid Black;
+    font-size: 11px;
+}
+
+.EmptyMessageStyle
+{
+    padding: 15px 0 15px 0;
+    text-align: center;
+    color: Red;
+    font-size: 16px;
+    font-family: Verdana;
+    font-weight: bold;
+}
+
+.panelStyle fieldSet
+{
+    border: 2px solid Blue;
+}
+
+.panelStyle legend
+{
+    color: Maroon;
+    font-size: 12px;
+}
+ .emptyStar
+ { 
+     background-image: url("../images/stars_gray.gif"); 
+     width: 16px; 
+     height: 16px;
+ } 
+ .star
+ { 
+     background-image: url("../images/star.png"); 
+     width: 16px; 
+     height: 16px; 
+ }  
+ .waitingStar
+ { 
+     background-image: url("../images/rating_on.gif"); 
+     width: 16px; 
+     height: 16px; 
+ }
