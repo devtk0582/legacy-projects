@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGame", "MyGame\MyGame\MyGame.csproj", "{B3BFD4E3-AD31-425A-A980-5CE4B12210AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGameContent", "MyGame\MyGameContent\MyGameContent.contentproj", "{B2540E3D-CF2D-40DF-B8E1-61166D5C63FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollideGame", "CollideGame\CollideGame\CollideGame.csproj", "{240D4526-0065-43FE-A370-C7A51DA4A15B}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "CollideGameContent", "CollideGame\CollideGameContent\CollideGameContent.contentproj", "{FA8929C7-4FE2-41CC-BCC4-573688DA9B40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3BFD4E3-AD31-425A-A980-5CE4B12210AC}.Debug|x86.ActiveCfg = Debug|x86
+		{B3BFD4E3-AD31-425A-A980-5CE4B12210AC}.Debug|x86.Build.0 = Debug|x86
+		{B3BFD4E3-AD31-425A-A980-5CE4B12210AC}.Release|x86.ActiveCfg = Release|x86
+		{B3BFD4E3-AD31-425A-A980-5CE4B12210AC}.Release|x86.Build.0 = Release|x86
+		{B2540E3D-CF2D-40DF-B8E1-61166D5C63FF}.Debug|x86.ActiveCfg = Debug|x86
+		{B2540E3D-CF2D-40DF-B8E1-61166D5C63FF}.Release|x86.ActiveCfg = Release|x86
+		{240D4526-0065-43FE-A370-C7A51DA4A15B}.Debug|x86.ActiveCfg = Debug|x86
+		{240D4526-0065-43FE-A370-C7A51DA4A15B}.Debug|x86.Build.0 = Debug|x86
+		{240D4526-0065-43FE-A370-C7A51DA4A15B}.Release|x86.ActiveCfg = Release|x86
+		{240D4526-0065-43FE-A370-C7A51DA4A15B}.Release|x86.Build.0 = Release|x86
+		{FA8929C7-4FE2-41CC-BCC4-573688DA9B40}.Debug|x86.ActiveCfg = Debug|x86
+		{FA8929C7-4FE2-41CC-BCC4-573688DA9B40}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

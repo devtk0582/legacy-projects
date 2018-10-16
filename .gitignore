@@ -10,3 +10,13 @@
 /BugTrac/App_Data
 /DashboardApp/DashBoardBLL/obj/Debug
 /DashboardApp/PDFHelper/bin
+/My3DGame/My3DGame/My3DGame/bin/x86/Debug
+/My3DGame/My3DGame/My3DGame/obj/x86/Debug
+/My3DGame/My3DGameTest/My3DGameTest/bin/x86/Debug
+/My3DGame/My3DGameTest/My3DGameTest/obj/x86/Debug
+/MyShootingGame/CollideGame/CollideGame/obj/x86/Debug
+/MyShootingGame/CollideGame/CollideGame/publish
+/MyShootingGame/CollideGame/CollideGameContent/obj/x86/Debug
+/MyShootingGame/MyGame/MyGame/obj/x86/Debug
+/MyShootingGame/MyGame/MyGame/publish
+/MyShootingGame/MyGame/MyGameContent/obj/x86/Debug
