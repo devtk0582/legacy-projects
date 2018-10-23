@@ -35,3 +35,13 @@ My Shooting Game:
 * Casual shooting game developed under XNA framework
 * Interactive interface, dynamic rendering and sprits randomizer
 * Sample .exe files can be run after installing XNA Redistributables
+
+Utility Library Project:
+* Custom controls: data pager grid view
+* Html: folder viewing dialog
+* Network folder accessor functions / Impersonator functions
+* Open id helper functions
+* PDF helpers: fill out PDF form, add print function to PDF file, generate PDF files by custom values
+* Smtp helpers: send emails etc.
+* SOAP helpers: Generate SOAP request
+* Utility web application: file upload engine with file browsing functionality
