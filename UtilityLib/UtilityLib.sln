@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityLib", "UtilityLib\UtilityLib.csproj", "{45B47549-C768-4668-AB83-A4D9FE94CCBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityWeb", "UtilityWeb\UtilityWeb.csproj", "{9760A5BE-E59F-4200-80DA-48D969692AEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{45B47549-C768-4668-AB83-A4D9FE94CCBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45B47549-C768-4668-AB83-A4D9FE94CCBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45B47549-C768-4668-AB83-A4D9FE94CCBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9760A5BE-E59F-4200-80DA-48D969692AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9760A5BE-E59F-4200-80DA-48D969692AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9760A5BE-E59F-4200-80DA-48D969692AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9760A5BE-E59F-4200-80DA-48D969692AEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
