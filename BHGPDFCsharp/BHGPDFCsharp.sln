@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHGPDFCsharp", "BHGPDFCsharp\BHGPDFCsharp.csproj", "{6B027AAB-A2A7-43EE-87AD-071064A32E3B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A2698E42-21D3-43ED-BBA2-98CD329D56B3} = {A2698E42-21D3-43ED-BBA2-98CD329D56B3}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHGPDFCsharp.Business", "BHGPDFCsharp.Business\BHGPDFCsharp.Business.csproj", "{6C0C3AD1-1CC6-4E10-B298-8E2504AF430F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHGPDFCsharp.DataAccess", "BHGPDFCsharp.DataAccess\BHGPDFCsharp.DataAccess.csproj", "{0F7D5A04-8B43-4266-B01D-458517C208D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHGService", "BHGService\BHGService.csproj", "{A2698E42-21D3-43ED-BBA2-98CD329D56B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B027AAB-A2A7-43EE-87AD-071064A32E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B027AAB-A2A7-43EE-87AD-071064A32E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B027AAB-A2A7-43EE-87AD-071064A32E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B027AAB-A2A7-43EE-87AD-071064A32E3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C0C3AD1-1CC6-4E10-B298-8E2504AF430F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0C3AD1-1CC6-4E10-B298-8E2504AF430F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0C3AD1-1CC6-4E10-B298-8E2504AF430F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0C3AD1-1CC6-4E10-B298-8E2504AF430F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F7D5A04-8B43-4266-B01D-458517C208D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7D5A04-8B43-4266-B01D-458517C208D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F7D5A04-8B43-4266-B01D-458517C208D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7D5A04-8B43-4266-B01D-458517C208D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2698E42-21D3-43ED-BBA2-98CD329D56B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2698E42-21D3-43ED-BBA2-98CD329D56B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2698E42-21D3-43ED-BBA2-98CD329D56B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2698E42-21D3-43ED-BBA2-98CD329D56B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {350397CB-64F0-4ED4-A890-A4EC43C0CE46}
+	EndGlobalSection
+EndGlobal
