@@ -45,3 +45,15 @@ Utility Library Project:
 * Smtp helpers: send emails etc.
 * SOAP helpers: Generate SOAP request
 * Utility web application: file upload engine with file browsing functionality
+
+AtoTech Scan Project:
+* Smart Device Project with CAB deployment project specifically for portable scanning devices
+* Flexible and comprehensive scanning functionatily with Barcode2 library
+* Dynamic UI and custom controls in forms
+* Data synchronization with web application
+
+BHG PDF Project:
+* PDF file generation
+* Automatic fill out forms
+* Merge PDF files
+* WCF web service
