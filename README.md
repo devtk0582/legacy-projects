@@ -1,18 +1,18 @@
 # legacy-projects
-Past projects from 2009 to 2018
+Past projects from 2009 to 2016
 
-BugTrac Project:
+BugTrac Project (2013):
 * Bug tracking system
 * Flexible editor
 * Version control
 
-Dashboard Application:
+Dashboard Application (2012):
 * Dynamic dashboard showcase with FusionCharts
 * Custom data management
 * PDF reports generator
 * Sample PDFs under PDFFiles folder
 
-Dynamic Cutter Application:
+Dynamic Cutter Application (2015 - 2016):
 * Applied and utilized in real material cutting factory
 * Windows Forms Application with embeded web pages
 * Dual monitors synced in real-time from 2 sides (computers) using SQL Dependency technique
@@ -22,21 +22,21 @@ Dynamic Cutter Application:
 * Defect control, action control and side control
 * Multi-threading application
 
-Echo Map Application:
+Echo Map Application (2014):
 * Google api to draw border using zip code
 * Various colors for different zip codes
 
-IMS Demo Project:
+IMS Demo Project (2013):
 * ASP.NET web application with Silverlight
 * Dynamic and animated report / dashboard
 * Speech service to allow the application to "speak" to the end user
 
-My Shooting Game:
+My Shooting Game (2012):
 * Casual shooting game developed under XNA framework
 * Interactive interface, dynamic rendering and sprits randomizer
 * Sample .exe files can be run after installing XNA Redistributables
 
-Utility Library Project:
+Utility Library Project (2011 - 2014):
 * Custom controls: data pager grid view
 * Html: folder viewing dialog
 * Network folder accessor functions / Impersonator functions
@@ -46,13 +46,13 @@ Utility Library Project:
 * SOAP helpers: Generate SOAP request
 * Utility web application: file upload engine with file browsing functionality
 
-AtoTech Scan Project:
+AtoTech Scan Project (2014):
 * Smart Device Project with CAB deployment project specifically for portable scanning devices
 * Flexible and comprehensive scanning functionatily with Barcode2 library
 * Dynamic UI and custom controls in forms
 * Data synchronization with web application
 
-BHG PDF Project:
+BHG PDF Project (2011):
 * PDF file generation
 * Automatic fill out forms
 * Merge PDF files
